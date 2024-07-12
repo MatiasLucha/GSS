@@ -136,12 +136,7 @@ The more education you have, the more likely you are to VOTE12.
 t.test(EDUC~VOTE12, data=GSSdata)
 ```
 
-```{r}
-chisq.test(table1)
-chisqtestGC(table1)
-```
-
-This T TESTS shows that this means that those who 
+This T TESTS shows that this means that those who voted had a better education. Therefore we reject the null hypothesis. 
 
 #  Question 3
 
@@ -156,6 +151,10 @@ $H_A$: Performance on the wordsum test is dependent of their level of schooling.
 ## Methods
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
+
+WORDSUM is a numerical variable,
+DEGREE us a categorical variable,
+so I use the num~cat data file
 
 ## Results
 
