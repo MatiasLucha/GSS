@@ -26,6 +26,9 @@ source("GrabData.R")
 The data in the dataframe GSSdata is from the 2018 General Social Survey. The first blocks of R-code has selected down a subset of the data to just 16 variables. It has further removed unwanted factor levels in much of the data. Examine the code in the GrabData.R file to see what it is doing. Some of the variables are categorical and others are numerical. Be sure to do a variable analysis before tackling each question.  
 First question - Is opinion on the death penalty (CAPPUN) independent of gun ownership (OWNGUN)?
 
+$H_0$: Opinion on capital punishment is independent of gun ownership.
+
+$H_A$: Capital punishment and gun ownership are dependent. 
 
 ## Methods
 
@@ -36,7 +39,7 @@ OWGUN is categorical, CAPPUN is also categorical.
 We want CAPPUN ~ OWNGUN
 The helper file we use is CAT~CAT
 
-##Results
+## Results
 
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
 
@@ -85,11 +88,20 @@ The fisherexact test has a p-value of 0.01651, Hence we reject the null hypothes
 
 Is there a difference in years of education (EDUC) between the those who did or did not vote in 2012 (VOTE12)?
 
+$H_0$: There is a difference in years of education between those who voted and did not vote in 2012.
+
+$H_A$: There is no difference betwen education and if someone voted.
+
 ## Methods
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
 
-##Results
+EDUC is categorical, VOTE12 is also categorical.
+
+We want EDUC ~ VOTE12
+The helper file we use is CAT~CAT
+
+## Results
 
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
 
@@ -104,6 +116,7 @@ barchartGC(~EDUC + VOTE12,data=GSSdata)
 barchartGC(~EDUC + VOTE12,data=GSSdata, type="percent")
 
 ```
+This shows that there was an increase of people who voted in 2012 tended to have higher education.
 
 #### Numerical Descriptive Results
 
@@ -114,14 +127,18 @@ table1 <- xtabs(~EDUC + VOTE12, data=GSSdata)
 rowPerc(table1)
 colPerc(table1)
 ```
-
+The more education you have, the more likely you are to VOTE12. 
 ### Inferential Results
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
+
+```{r}
+t.test(EDUC~VOTE12, data=GSSdata)
+```
+
 ```{r}
 chisq.test(table1)
 chisqtestGC(table1)
-fisher.test(table1)
 ```
 
 This T TESTS shows that this means that those who 
@@ -132,11 +149,15 @@ This T TESTS shows that this means that those who
 
 Determine if a persons performance on the wordsum test (WORDSUM) is independent of their level of schooling (DEGREE).
 
+$H_0$: Performance on the wordsum test is independent of their level of schooling.
+
+$H_A$: Performance on the wordsum test is dependent of their level of schooling.
+
 ## Methods
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
 
-##Results
+## Results
 
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
 
@@ -169,7 +190,6 @@ colPerc(table1)
 ```{r}
 chisq.test(table1)
 chisqtestGC(table1)
-fisher.test(table1)
 ```
 
 # Discussion and Conclusion
