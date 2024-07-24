@@ -196,8 +196,13 @@ summary(anova)
 As we can see, the p-value is 0.00000025 which is smaller than 0.05. Therefore, we reject the null hypothesis.
 
 ```{r}
-plot(TukeyHSD(anova))
+#we specify the margins starting at the bottom and proceeding clockwise - thus 8.7 is the left side margin to hold the names of the factors
+par(mar = c(3, 8.7, 2, 2))
+plot(TukeyHSD(anova),las=2)
 ```
+
+
+
 
 # Discussion and Conclusion
 
