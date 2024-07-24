@@ -166,6 +166,10 @@ so I use the num~cat data file
 
 #### Graphical Descriptive Results
 
+```{r}
+boxplot(WORDSUM~DEGREE,data=GSSdata)
+```
+
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
 ```{r}
@@ -197,10 +201,10 @@ As we can see, the p-value is 0.00000025 which is smaller than 0.05. Therefore, 
 
 ```{r}
 #we specify the margins starting at the bottom and proceeding clockwise - thus 8.7 is the left side margin to hold the names of the factors
-par(mar = c(3, 8.7, 2, 2))
+par(mar = c(7, 8.7, 2, 2))
 plot(TukeyHSD(anova),las=2)
 ```
-
+The family-wise confidence levels for high school and less than high school have no difference. There is a difference between bachelor's degree and high school. There is a difference between graduate and high school. There is no difference between highschool and gradyate. There is no difference between jr college and graduate. There is no difference between bachelors and graduates. 
 
 
 
